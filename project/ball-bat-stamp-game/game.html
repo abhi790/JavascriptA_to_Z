@@ -1,1 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bat ball stamp project</title>
+    <style>
+      .button-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .button-container button {
+        padding: 5px 15px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        margin: 0 5px;
+        color: red;
+        background-color: aquamarine;
+        border: 2px solid rgb(224, 224, 224);
+        border-radius: 5px;
+      }
+      .button-container button:hover {
+        color: aquamarine;
+        margin: 0 5px;
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Bat Ball Stamp Game</h1>
+    <div class="button-container">
+      <button
+        onclick="
+        let computerChoice = generateComputerChoice();
+        let result = getResult('Bat', computerChoice);
+        getAlert('Bat',computerChoice,result);"
+      >
+        Bat
+      </button>
+      <button onclick="
+        computerChoice = generateComputerChoice();
+        result = getResult('Ball', computerChoice);
+        getAlert('Ball',computerChoice,result);"">Ball</button>
+      <button onclick="
+        computerChoice = generateComputerChoice();
+        result = getResult('Stump', computerChoice);
+        getAlert('Stump',computerChoice,result);"">Stump</button>
+    </div>
+  </body>
 
+  <script>
+    function generateComputerChoice() {
+      //This will generate random number between 0 and 3
+      let randomNumber = Math.random() * 3;
+      if (randomNumber > 0 && randomNumber <= 1) {
+        return "Bat";
+      } else if (randomNumber > 1 && randomNumber <= 2) {
+        return "Ball";
+      } else {
+        return "Stump";
+      }
+    }
+
+    function getResult(userMove, computerMove) {
+      if (userMove === "Bat") {
+        if (computerMove === "Ball") {
+          return "User won.";
+        } else if (computerMove === "Bat") {
+          return `It's a tie`;
+        } else if (computerMove === "Stump") {
+          return "Computer has won";
+        }
+      } else if (userMove === "Ball") {
+        if (computerMove === "Ball") {
+          return `It's a tie`;
+        } else if (computerMove === "Bat") {
+          return "Computer has won";
+        } else if (computerMove === "Stump") {
+          return "User won.";
+        }
+      } else {
+        if (computerMove === "Ball") {
+          return "Computer has won";
+        } else if (computerMove === "Bat") {
+          return "User won.";
+        } else if (computerMove === "Stump") {
+          return `It's a tie`;
+        }
+      }
+    }
+
+    function getAlert(
+      userchoice,
+      computerChoice = "no choice",
+      winner = "no choice"
+    ) {
+      alert(
+        `You have choosen ${userchoice}. Computer choice is ${computerChoice}.${winner}`
+      );
+    }
+  </script>
+</html>
