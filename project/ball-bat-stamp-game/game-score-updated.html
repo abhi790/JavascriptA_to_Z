@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bat ball stamp project</title>
+    <style>
+      .button-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .button-container button {
+        padding: 5px 15px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        margin: 0 5px;
+        color: red;
+        background-color: aquamarine;
+        border: 2px solid rgb(224, 224, 224);
+        border-radius: 5px;
+      }
+      .button-container button:hover {
+        color: aquamarine;
+        margin: 0 5px;
+        background-color: black;
+      }
+      .list li {
+        font: bold;
+        font-size: 30px;
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Bat Ball Stamp Game</h1>
+    <div class="button-container">
+      <button
+        onclick="
+        let computerChoice = generateComputerChoice();
+        let result = getResult('Bat', computerChoice);
+        setScore();"
+      >
+        Bat
+      </button>
+      <button
+        onclick="
+        computerChoice = generateComputerChoice();
+        result = getResult('Ball', computerChoice);
+        setScore();"
+      >
+        Ball
+      </button>
+      <button
+        onclick="
+        computerChoice = generateComputerChoice();
+        result = getResult('Stump', computerChoice);
+        setScore();"
+      >
+        Stump
+      </button>
+    </div>
+    <div>
+      <h3>Score</h3>
+      <ul class="list">
+        <li>User : 0</li>
+        <li>Computer : 0</li>
+        <li>Tie : 0</li>
+      </ul>
+    </div>
+  </body>
+
+  <script>
+    let score = {
+      user: 0,
+      computer: 0,
+      tie: 0,
+    };
+    function generateComputerChoice() {
+      //This will generate random number between 0 and 3
+      let randomNumber = Math.random() * 3;
+      if (randomNumber > 0 && randomNumber <= 1) {
+        return "Bat";
+      } else if (randomNumber > 1 && randomNumber <= 2) {
+        return "Ball";
+      } else {
+        return "Stump";
+      }
+    }
+
+    function getResult(userMove, computerMove) {
+      if (userMove === "Bat") {
+        if (computerMove === "Ball") {
+          score.user++;
+          return "User won.";
+        } else if (computerMove === "Bat") {
+          score.tie++;
+          return `It's a tie`;
+        } else if (computerMove === "Stump") {
+          score.computer++;
+          return "Computer has won";
+        }
+      } else if (userMove === "Ball") {
+        if (computerMove === "Ball") {
+          score.tie++;
+          return `It's a tie`;
+        } else if (computerMove === "Bat") {
+          score.computer++;
+          return "Computer has won";
+        } else if (computerMove === "Stump") {
+          score.user++;
+          return "User won.";
+        }
+      } else {
+        if (computerMove === "Ball") {
+          score.computer++;
+          return "Computer has won";
+        } else if (computerMove === "Bat") {
+          score.user++;
+          return "User won.";
+        } else if (computerMove === "Stump") {
+          score.tie++;
+          return `It's a tie`;
+        }
+      }
+    }
+
+    function setScore() {
+      document.querySelector(".list").innerHTML = `
+        <li>User : ${score.user}</li>
+        <li>Computer : ${score.computer}</li>
+        <li>Tie : ${score.tie}</li>
+    `;
+    }
+  </script>
+</html>
