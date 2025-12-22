@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learning concept button click</title>
+    <link rel="stylesheet" href="../styles/practice-set-3.css" />
+  </head>
+  <body>
+    <h2>In this demo we will learn Button click, how to trigger</h2>
+    <div class="container">
+      <button
+        class="btn_1"
+        onclick="itemCount++; 
+            document.querySelector('#message').textContent = `Your cart has ${itemCount} items`;"
+      >
+        Add to Bag
+      </button>
+      <button
+        class="btn_2"
+        onclick="itemCount--; document.querySelector('#message').textContent = `Your cart has ${itemCount} items`;"
+      >
+        ❤️Add to WISHLIST
+      </button>
+      <button
+        class="btn_3"
+        onclick="itemCount = itemCount + 2;document.querySelector('#message').textContent = `Your cart has ${itemCount} items`;"
+      >
+        Add 1 + 1 sales
+      </button>
+      <h1 id="message"></h1>
+    </div>
+
+    <script>
+      let itemCount = 0;
+      document.querySelector(
+        "#message"
+      ).textContent = `Your cart has ${itemCount} items`;
+    </script>
+  </body>
+</html>
