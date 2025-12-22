@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON Learning</title>
+    <style>
+      pre {
+        color: white;
+        background-color: rgb(0, 0, 0);
+        width: 300px;
+        padding: 10px;
+        border-radius: 20px;
+        border: 5px solid rgb(188, 188, 188);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Learning JSON</h1>
+    <h2>JSON</h2>
+    <p>
+      My javascript object is converted into JSON object using function
+      <b>JSON.stringify(object)</b>
+    </p>
+    <pre>
+        let product = {
+            "name" : "abhimanyu", 
+            "age" : 28,
+            "address" : {
+                "pincode" : 700107,
+                "city" : "kolkata",
+                "state" : "West Bengal"
+            },
+        }
+    </pre>
+    <hr />
+    <p>
+      Again JSON object can be converted back to javascript object using
+      function
+      <b>JSON.parse(string_data)</b>
+    </p>
+    <pre>
+ 
+        {
+            name : "abhimanyu", 
+            age : 28,
+            address : {
+                pincode : 700107,
+                city : "kolkata",
+                state : "West Bengal"
+            },
+        }
+    </pre>
+    <script>
+      let product = {
+        name: "abhimanyu",
+        age: 28,
+        address: {
+          pincode: 700107,
+          city: "kolkata",
+          state: "West Bengal",
+        },
+      };
+      console.log(typeof product);
+      console.log(product);
+      console.log("object to JSON.stringify(product)");
+      //   converting product object into json object using JSON.stringify(product)
+      let str = JSON.stringify(product);
+      console.log(typeof str);
+      console.log(str);
+
+      //   converting json object into javascript object using JSON.parse(str)
+      console.log("json ---> JSON.parse(str)");
+      console.log(JSON.parse(str));
+    </script>
+  </body>
+</html>
