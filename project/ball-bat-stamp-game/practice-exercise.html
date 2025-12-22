@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice Exercise</title>
+  </head>
+  <body>
+    <main>
+      <h1>Here we will revise all the things we learned</h1>
+      <ul>
+        <li>Variable</li>
+        <li>Comparion operator</li>
+        <li>Logical operator</li>
+        <li>functions and many things</li>
+      </ul>
+      <hr />
+      <section>
+        <h2>Odd even checking</h2>
+        <input type="text" class="userinput1" placeholder="Enter number" />
+        <button
+          onclick="
+          let value = document.querySelector('.userinput1').value;
+          document.querySelector('#odd-even').textContent = 'Given number is ' + oddEvenChecking(value); 
+        "
+        >
+          Check
+        </button>
+        <p id="odd-even"></p>
+      </section>
+      <br />
+      <hr />
+      <section>
+        <h2>Larger of two number</h2>
+        <input type="text" id="userinput2" placeholder="Enter number 1" />
+        <input type="text" id="userinput3" placeholder="Enter number 2" />
+        <button
+          onclick="
+          let number1 = document.querySelector('#userinput2').value;
+          let number2 = document.querySelector('#userinput3').value;
+          document.querySelector('#larger-two').textContent = largerAmongTwo(number1, number2);  
+        "
+        >
+          Check
+        </button>
+        <p id="larger-two"></p>
+      </section>
+      <hr />
+      <section>
+        <h2>Celcius to Fahrenheit converter</h2>
+        <input type="text" id="userinput4" placeholder="Enter celcius" />
+        <button
+          onclick="
+          let celcius = document.querySelector('#userinput4').value;
+          document.querySelector('#celcius-temp').textContent = celciusToFahrenheit(celcius);  
+        "
+        >
+          Check
+        </button>
+        <p id="celcius-temp"></p>
+      </section>
+    </main>
+
+    <!-- <footer>This is the footer</footer> -->
+
+    <script>
+      // Function to check if the given number is even or odd
+      function oddEvenChecking(number) {
+        if (number % 2 === 0) {
+          return "Even";
+        } else {
+          return "Odd";
+        }
+      }
+
+      //   Function to check larger between two numbers
+      function largerAmongTwo(number1, number2) {
+        if (number1 > number2) {
+          return `${number1} is greater than ${number2}`;
+        } else if (number2 > number1) {
+          return `${number2} is greater than ${number1}`;
+        } else return `Both number are equal`;
+      }
+
+      // Function to calculate celcius to fahrenheit
+      function celciusToFahrenheit(celcius) {
+        return (celcius * 9.0) / 5.0 + 32.0;
+      }
+    </script>
+  </body>
+</html>
