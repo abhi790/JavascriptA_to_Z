@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON Learning</title>
+    <style>
+      pre {
+        color: white;
+        background-color: rgb(0, 0, 0);
+        width: 300px;
+        padding: 25px 0px;
+        border-radius: 20px;
+        border: 5px solid rgb(188, 188, 188);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>We will going to learn LocalStorage in this lesson</h1>
+    <h2>
+      LocalStorage has 4 function, so that we can use it to store, access and
+      remove content from and to localstorage
+    </h2>
+    <ul>
+      <li>localstorage.setItem('key', 'value')</li>
+      <li>localstorage.getItem('key')</li>
+      <li>localstorage.removeItem('key')</li>
+      <li>localstorage.clear()</li>
+    </ul>
+    <h3>1. Storing single string value into localstorage</h3>
+    <pre style="width: 410px">
+        // 1. Storing single string
+        localStorage.setItem("fruit", "Mango");
+        // accessing single value using it's key
+        console.log(localStorage.getItem("fruit"));
+
+        let token = "Cartoon";
+        let tokenValue = "Oggy and Cockroaches";
+        localStorage.setItem(token, tokenValue);
+
+        //Both will result same output
+        console.log(localStorage.getItem(token));
+        console.log(localStorage.getItem("Cartoon"));
+
+        // clear a single item from localstorage
+        localStorage.removeItem("Cartoon");
+
+        //clear complete local storage
+            localStorage.clear();
+    </pre>
+    <h3>
+      2. Storing key as string and value by converting JSON.stringify as string
+    </h3>
+    <pre style="width: 600px">
+        // 2. Storing key as string and value as JSON.stringify as string
+        let product = {
+            name: "abhimanyu",
+            age: 28,
+            address: {
+            pincode: 700107,
+            city: "kolkata",
+            state: "West Bengal",
+            },
+        };
+
+        //    // storing object in localstorage
+        //    // first convert the object into stringify json
+        let stringifyJson = JSON.stringify(product);
+
+        // don't use only product as key instead use "product" as string
+        localStorage.setItem("product", stringifyJson);
+
+        //Accessing the object stored in localstorage by its key
+        let copyOfProduct = localStorage.getItem("product");
+        console.log(copyOfProduct);
+
+        //Below code will return into null return as because product 
+        object is not a primitive
+        console.log(localStorage.getItem(product));
+        //Use below instead
+        console.log(localStorage.getItem("product"));
+    </pre>
+
+    <script>
+      //   // localstorage value should be in string
+      //   // 1. Storing single string
+      //   localStorage.setItem("fruit", "Mango");
+      //   console.log(localStorage.getItem("fruit"));
+      //   let key = "Cartoon";
+      //   let value = "Oggy and Cockroaches";
+      //   localStorage.setItem(key, value);
+      //   //Both will result same output
+      //   console.log(localStorage.getItem(key));
+      //   console.log(localStorage.getItem("Cartoon"));
+
+      //   // clear a single item from localstorage
+      //   localStorage.removeItem("Cartoon");
+
+      //   //clear all local storage
+      //   localStorage.clear();
+
+      //     // 2. Storing key as string and value as JSON.stringify as string
+      //   let product = {
+      //     name: "abhimanyu",
+      //     age: 28,
+      //     address: {
+      //       pincode: 700107,
+      //       city: "kolkata",
+      //       state: "West Bengal",
+      //     },
+      //   };
+
+      //   // storing object in localstorage
+      //   // first convert the object into stringify json
+      //   let stringifyJson = JSON.stringify(product);
+      //   // don't use only product as key instead use "product" as string
+      //   localStorage.setItem("product", stringifyJson);
+      //   //Accessing the object stored in localstorage by its key
+      //   let copyOfProduct = localStorage.getItem("product");
+      //   console.log(copyOfProduct);
+      //   //Below code will return into null return as because "product" is not a primitive
+      //   console.log(localStorage.getItem(product));
+    </script>
+  </body>
+</html>
