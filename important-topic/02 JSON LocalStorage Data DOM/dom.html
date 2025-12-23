@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Practice</title>
+  </head>
+  <style>
+    body {
+      text-align: center;
+    }
+    pre {
+      text-align: start;
+      color: white;
+      background-color: rgb(0, 0, 0);
+      width: 300px;
+      padding: 25px 0px;
+      border-radius: 20px;
+      border: 5px solid rgb(188, 188, 188);
+    }
+    .button-container button {
+      padding: 5px 15px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      margin: 0 5px;
+      color: red;
+      background-color: aquamarine;
+      border: 2px solid rgb(224, 224, 224);
+      border-radius: 5px;
+    }
+    .button-container button:hover {
+      color: aquamarine;
+      margin: 0 5px;
+      background-color: black;
+    }
+  </style>
+  <body>
+    <main>
+      <div>
+        <h1>Learning HTML element and methods</h1>
+        <p class="para para2 para3">This is a paragraph</p>
+        <a href="www.google.in">Go to google</a>
+
+        <h2>We have several element and methods in DOM</h2>
+        <div>
+          <pre style="width: 400px">
+    let dom = document;
+    console.log(dom.location);
+    console.log(dom.title);
+    console.log(dom.querySelector("a").href);
+    console.log(dom.domain);
+    console.log(dom.querySelector("h1").innerText);
+    console.log(dom.querySelector("h1").innerHTML);
+    console.log(dom.querySelector(".para"));
+    console.log(dom.querySelector(".para").classList);
+    </pre
+          >
+        </div>
+        <div
+          class="simple-div"
+          style="
+            background-color: rgb(200, 230, 255);
+            color: black;
+            padding: 10px;
+            border-radius: 10px;
+          "
+        >
+          Here we will inject a h4 element using appendChild();
+        </div>
+        <h2 id="heading">several others method also</h2>
+        <pre style="width: 550px">
+    let dom = document;
+    // selecting element using different methods
+    dom.getElementById("heading");
+    dom.getElementsByClassName("para");
+    dom.querySelector(".para");
+
+    // creating an 'h1' element using createElement, we can inject 
+    this element wherever we want
+    dom.createElement("h4");
+    let h4 = dom.createElement("h4");
+
+    //setting some content inside h4
+    h4.innerHTML = "I have been generated using appendChild() mehtod of dom";
+
+    // appending a h4 element inside a div whose class is simple-div
+    dom.querySelector(".simple-div").append(h4);
+
+    //several other methods as 
+    dom.querySelector('.className').classList.add(".secondClassName");
+    dom.querySelector('.className').classList.remove(".secondClassName");
+    
+    // remove child example
+    const parent = document.getElementById("parent");
+    const child = document.getElementById("child");
+    const throwawayNode = parent.removeChild(child);
+
+    //replace child example
+    dom.querySelector('.className').replaceChild(newChild, oldChild);
+    </pre
+        >
+      </div>
+    </main>
+
+    <footer></footer>
+    <script>
+      // // Part 1
+      // let dom = document;
+      // console.log(dom.location);
+      // console.log(dom.title);
+      // console.log(dom.querySelector("a").href);
+      // console.log(dom.domain);
+      // console.log(dom.querySelector("h1").innerText);
+      // console.log(dom.querySelector("h1").innerHTML);
+      // console.log(dom.querySelector(".para"));
+      // console.log(dom.querySelector(".para").classList);
+
+      //Part 2
+      let dom = document;
+      // selecting element using different methods
+      dom.getElementById("heading");
+      dom.getElementsByClassName("para");
+      dom.querySelector(".para");
+      // creating an 'h1' element using createElement, we can inject this element wherever we want
+      console.log(dom.createElement("h4"));
+      let h4 = dom.createElement("h4");
+      //setting some content inside h4
+      h4.innerHTML = "I have been generated using appendChild() mehtod of dom";
+      // appending a h4 element inside a div whose class is simple-div
+      dom.querySelector(".simple-div").append(h4);
+
+      //
+    </script>
+  </body>
+</html>

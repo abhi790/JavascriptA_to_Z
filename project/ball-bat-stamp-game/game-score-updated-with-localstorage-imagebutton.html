@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bat ball stamp project</title>
+    <style>
+      .button-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .button-container button {
+        padding: 5px 15px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        margin: 0 5px;
+        color: red;
+        background-color: rgb(56, 255, 46);
+        border: 2px solid rgb(224, 224, 224);
+        border-radius: 50px;
+      }
+      .button-container button:hover {
+        background-color: rgb(203, 255, 197);
+      }
+      .list li {
+        font: bold;
+        font-size: 30px;
+        color: blue;
+      }
+      .choice-button {
+        width: 100px;
+        height: 100px;
+        cursor: pointer;
+      }
+      .image-button {
+        height: 70px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Bat Ball Stamp Game</h1>
+    <div class="button-container">
+      <button
+        class="choice-button"
+        onclick="
+        let computerChoice = generateComputerChoice();
+        let result = getResult('Bat', computerChoice);
+        setScore();"
+      >
+        <img class="image-button" src="images/bat.png" alt="Bat image" />
+      </button>
+      <button
+        class="choice-button"
+        onclick="
+        computerChoice = generateComputerChoice();
+        result = getResult('Ball', computerChoice);
+        setScore();"
+      >
+        <img class="image-button" src="images/ball.png" alt="Ball image" />
+      </button>
+      <button
+        class="choice-button"
+        onclick="
+        computerChoice = generateComputerChoice();
+        result = getResult('Stump', computerChoice);
+        setScore();"
+      >
+        <img class="image-button" src="images/stump.png" alt="Stump image" />
+      </button>
+      <button onclick="resetScore();">RESET</button>
+    </div>
+    <div>
+      <h3>Score</h3>
+      <button id="vanishButton" onclick="showScore();">Show last score</button>
+      <ul class="list">
+        <!-- <li>User : 0</li>
+        <li>Computer : 0</li>
+        <li>Tie : 0</li> -->
+      </ul>
+    </div>
+  </body>
+
+  <script>
+    // 1. First we will store the data to localstorage whenever we play a match
+    let updatedScore = localStorage.getItem("Score");
+    let score = JSON.parse(updatedScore) || {
+      user: 0,
+      computer: 0,
+      tie: 0,
+    };
+
+    function saveTheScore() {
+      localStorage.setItem("Score", JSON.stringify(score));
+    }
+
+    function generateComputerChoice() {
+      //This will generate random number between 0 and 3
+      let randomNumber = Math.random() * 3;
+      if (randomNumber > 0 && randomNumber <= 1) {
+        return "Bat";
+      } else if (randomNumber > 1 && randomNumber <= 2) {
+        return "Ball";
+      } else {
+        return "Stump";
+      }
+    }
+
+    function getResult(userMove, computerMove) {
+      if (userMove === "Bat") {
+        if (computerMove === "Ball") {
+          score.user++;
+          saveTheScore();
+          return "User won.";
+        } else if (computerMove === "Bat") {
+          score.tie++;
+          saveTheScore();
+          return `It's a tie`;
+        } else if (computerMove === "Stump") {
+          score.computer++;
+          saveTheScore();
+          return "Computer has won";
+        }
+      } else if (userMove === "Ball") {
+        if (computerMove === "Ball") {
+          score.tie++;
+          saveTheScore();
+          return `It's a tie`;
+        } else if (computerMove === "Bat") {
+          score.computer++;
+          saveTheScore();
+          return "Computer has won";
+        } else if (computerMove === "Stump") {
+          score.user++;
+          saveTheScore();
+          return "User won.";
+        }
+      } else {
+        if (computerMove === "Ball") {
+          score.computer++;
+          saveTheScore();
+          return "Computer has won";
+        } else if (computerMove === "Bat") {
+          score.user++;
+          saveTheScore();
+          return "User won.";
+        } else if (computerMove === "Stump") {
+          score.tie++;
+          saveTheScore();
+          return `It's a tie`;
+        }
+      }
+    }
+
+    function showScore() {
+      //Below code needs two clicks to take effective find out why?
+      // Get the button element by its id
+      let button = document.querySelector("#vanishButton");
+      // Add an event listener for the 'click' event
+      button.addEventListener("click", function () {
+        // Set the 'display' style to 'none' to hide it
+        button.style.display = "none";
+      });
+
+      setScore();
+    }
+
+    function setScore() {
+      score = JSON.parse(localStorage.getItem("Score")) || {
+        user: 0,
+        computer: 0,
+        tie: 0,
+      };
+      document.querySelector(".list").innerHTML = `
+        <li>User : ${score.user}</li>
+        <li>Computer : ${score.computer}</li>
+        <li>Tie : ${score.tie}</li>
+    `;
+    }
+    function resetScore() {
+      localStorage.clear();
+      score = {
+        user: 0,
+        computer: 0,
+        tie: 0,
+      };
+      setScore();
+    }
+  </script>
+</html>
