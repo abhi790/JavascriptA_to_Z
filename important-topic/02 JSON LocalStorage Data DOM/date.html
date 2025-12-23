@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Date</title>
+  </head>
+  <style>
+    .button-container button {
+      padding: 5px 15px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      margin: 0 5px;
+      color: red;
+      background-color: aquamarine;
+      border: 2px solid rgb(224, 224, 224);
+      border-radius: 5px;
+    }
+    .button-container button:hover {
+      color: aquamarine;
+      margin: 0 5px;
+      background-color: black;
+    }
+  </style>
+  <body>
+    <main>
+      <div class="button-container">
+        <button class="time" onclick="getTime();">
+          Show Date in millinsecods passed since 1st january 1971</button
+        ><br />
+        <button class="full-year" onclick="getFullYear()">Show Full Year</button
+        ><br />
+        <button class="day" onclick="getDay()">Day</button><br />
+        <button class="minutes" onclick="getMinutes()">Minutes</button><br />
+        <button class="hours" onclick="getHours()">Hour</button><br />
+      </div>
+    </main>
+
+    <footer></footer>
+    <script>
+      let date = new Date();
+      function getTime() {
+        document.querySelector(
+          ".time"
+        ).innerHTML = `<h1> ${date.getTime()} </h1>`;
+      }
+
+      function getFullYear() {
+        document.querySelector(
+          ".full-year"
+        ).innerHTML = `<h1> ${date.getFullYear()} </h1>`;
+      }
+
+      function getDay() {
+        document.querySelector(
+          ".day"
+        ).innerHTML = `<h1> ${date.getDay()} </h1>`;
+      }
+
+      function getMinutes() {
+        document.querySelector(
+          ".minutes"
+        ).innerHTML = `<h1> ${date.getMinutes()} </h1>`;
+      }
+
+      function getHours() {
+        document.querySelector(
+          ".hours"
+        ).innerHTML = `<h1> ${date.getHours()} </h1>`;
+      }
+    </script>
+  </body>
+</html>
