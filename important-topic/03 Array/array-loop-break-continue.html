@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice Array Loops Break and Continue</title>
+  </head>
+  <body>
+    <h1>
+      Practice Array Loops Break and Continue in a single file. To see magic
+      inspect the code by opening browser console and uncommenting the code in
+      the script tag below
+    </h1>
+    <script>
+      //   // 1. Create an array of numbers [5,6].Add 4 at the beginning and 7 at the end of the array.
+      //   let arr = [5, 6];
+      //   console.log(`[${arr.toString()}]`);
+      //   arr.unshift(4);
+      //   console.log(`[${arr.toString()}]`);
+      //   arr.push(7);
+      //   console.log(`[${arr.toString()}]`);
+
+      //   // 2. Create a method to return an element at a particular position in the array.
+      //   function returnEleAtIndex(arr, position) {
+      //     return arr[position - 1];
+      //   }
+
+      //   let arr = [1, 2, 3, 6, 0, 34, 56, 78, 65];
+      //   console.log(`[${arr.toString()}]`);
+      //   let position = 4;
+      //   console.log(
+      //     `${returnEleAtIndex(
+      //       arr,
+      //       position
+      //     )} is the element at the ${position}th in the array [${arr.toString()}] considering 0th as first position in the array`
+      //   );
+
+      //   // 3. Create an array copy using slice method.
+      //   let arr = [1, 2, 3, 4, 5, 6];
+      //   console.log(`[${arr.toString()}]`);
+      //   let arr2 = arr.slice(0, 4);
+      //   console.log(`[${arr2.toString()}]`);
+
+      //   // 4. Create a for loop that prints number 1 to 10 in reverse order.
+      //   for (let i = 10; i > 0; i--) {
+      //     console.log(i);
+      //   }
+
+      //   // 5. Create a while loop that exits after counting 5 prime numbers.
+      //   //checking if a number is prime or not
+      //   function isPrime(num) {
+      //     for (let i = 2; i < num; i++) {
+      //       if (num % i === 0) return false;
+      //     }
+      //     return true;
+      //   }
+      //   let num = 2;
+      //   let i = 0;
+      //   while (i < 5) {
+      //     if (isPrime(num)) {
+      //       i++;
+      //       console.log(num);
+      //     }
+      //     num++;
+      //   }
+
+      //   // 6. Using continue only print positive numbers from the given array [1, -6,5,7,-98]
+      //   let arr = [1, -6, 5, 7, -98];
+      //   console.log(`[${arr.toString()}]`);
+      //   for (let i = 0; i < arr.length; i++) {
+      //     if (arr[i] < 0) continue;
+      //     console.log(arr[i]);
+      //   }
+
+      //   // 7. Using accumulator pattern concatinate all the string in the given array
+      //   // ["KG", "Coding", "Javascript", "course", "is", "best"]
+      let arr = ["KG", "Coding", "Javascript", "course", "is", "best"];
+      //   let str = "";
+      //   for (let i = 0; i < arr.length; i++) {
+      //     const element = arr[i];
+      //     str = `${str} ${element}`;
+      //   }
+      //   console.log(`[${arr.toString()}]`);
+      //   console.log(str);
+
+      // We can use short cut method
+      console.log(arr.join(" ")); // with space
+      console.log(arr.join(",")); // with comma
+      console.log(arr.join(".")); // with dot
+      console.log(arr.toString());
+    </script>
+  </body>
+</html>
